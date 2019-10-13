@@ -1,25 +1,57 @@
+const toJson
 const handleMusicRouter = require('./src/route/music')
-const handleUserRouter = require('./src/route/user')
+const handleLoginRouter = require('./src/route/login')
+const handleRegistRouter = require('./src/route/regist')
+
+const getPostData = (req) => {
+  const promise = new Promise((res, rej) => {
+    if (req.method !== 'POST') {
+      res({})
+      return
+    }
+    let postData = ''
+    req.on('data', chunk => {
+      postData += chunk
+    })
+    req.on('end', () => {
+      if (!postData) {
+        console.log(1)
+        res({})
+        return
+      }
+      res(decodeURI(postData))
+    })
+  })
+  return promise
+}
 
 const serverHandle = (req, res) => {
-
   res.setHeader('Content-type', 'application/json')
-  
-  const musicData = handleMusicRouter(req, res)
+
+  getPostData(req).then(data => {
+    req.body = data
+    console.log(req.body)
+    const musicData = handleMusicRouter(req, res)
     if (musicData) {
       res.end(JSON.stringify(musicData))
       return
     }
 
-  const userData = handleUserRouter(req, res)
-    if (userData) {
-        res.end(JSON.stringify(userData))
-        return 
+  const loginData = handleLoginRouter(req, res)
+    if (loginData) {
+        loginData.then(data => {
+          res.end(JSON.stringify(data))
+          return 
+        })
     }
 
-  res.writeHead(404, {"Content-type": "text/plain"})
-  res.write("404 NOT FOUND\n")
-  res.end()
+    const registData = handleRegistRouter(req, res)
+    if (registData) {
+        res.end(JSON.stringify(registData))
+        return 
+    }
+  })
+  
 }
 
 module.exports = serverHandle
