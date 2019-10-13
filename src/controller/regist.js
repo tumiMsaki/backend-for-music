@@ -1,9 +1,14 @@
 const { registLikeDao } = require('../dao/regist')
 
 const regist = (uname, psw) => {
-  const flag = registLikeDao(uname, psw)
-  console.log(flag)
+
+  registLikeDao(uname, psw)
+              .then(result => result)
+              .catch(error => error)
 }
 
 
-regist('yyyk',123456)
+module.exports = {
+  regist
+}
+
