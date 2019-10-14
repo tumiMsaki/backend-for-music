@@ -1,13 +1,8 @@
-const { URL } = require('../utils/url')
 const { login } = require('../controller/login')
 const { Msg } = require('../conf/reqMsg')
 const handleLoginRouter = async (req, res) => {
 
-  const method = req.method
-  const url = URL(req.url)
-  const path = url.path
-
-  if (method === 'POST' && path === '/api/login') {
+  if (req.method === 'POST' && req.path === '/api/login') {
     const { username, password } = req.body
     try {
       const result = await login(username, password)

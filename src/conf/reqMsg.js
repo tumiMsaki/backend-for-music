@@ -23,7 +23,7 @@ const Msg = {
   registFail: () => {
     return {
       code: 201,
-      msg: 'username is be used'
+      msg: 'username is used'
      }
   }
 

@@ -1,15 +1,10 @@
-const { URL } = require('../utils/url')
 const { regist } = require('../controller/regist')
 const { unique } = require('../controller/unique')
 const { Msg } = require('../conf/reqMsg')
 
 const handleRegistRouter = async (req, res) => {
 
-  const method = req.method
-  const url = URL(req.url)
-  const path = url.pathname
-
-  if (method === 'POST' && path === '/api/regist') {
+  if (req.method === 'POST' && req.path === '/api/regist') {
     const { username, password } = req.body
     try {
       const flag = await unique(username)
@@ -29,7 +24,7 @@ const handleRegistRouter = async (req, res) => {
     } catch (err) {
       return {
         code: 500,
-        msg: 'serveice dead'
+        msg: 'service dead'
       }
     }
   } else {
