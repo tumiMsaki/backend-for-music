@@ -43,18 +43,25 @@ const serverHandle = (req, res) => {
   const loginData = handleLoginRouter(req, res)
     if (loginData) {
         loginData.then(data => {
-          res.end(JSON.stringify(data))
+          if (data) {
+            res.end(JSON.stringify(data))
+          }
           return 
         })
     }
 
     const registData = handleRegistRouter(req, res)
     if (registData) {
-        res.end(JSON.stringify(registData))
-        return 
+          registData.then(data => {
+            if(data) {
+              res.end(JSON.stringify(data))
+            }
+            return
+          }) 
     }
+  }).catch(err => {
+    console.log(err)
   })
-  
 }
 
 module.exports = serverHandle

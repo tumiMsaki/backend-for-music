@@ -1,9 +1,11 @@
 const { uniqueLikeDao } = require('../dao/unique')
 
 const unique = (usr) => {
-  uniqueLikeDao(usr)
-              .then(result => result)
-              .catch(error => error)
+  return uniqueLikeDao(usr).then(result => {
+    return result[0] || {}
+  }).catch(err => {
+    return err
+  })
 }
 
 module.exports = {
