@@ -1,4 +1,5 @@
-const toJson
+var querystring = require('querystring')
+var util = require('util')
 const handleMusicRouter = require('./src/route/music')
 const handleLoginRouter = require('./src/route/login')
 const handleRegistRouter = require('./src/route/regist')
@@ -9,17 +10,20 @@ const getPostData = (req) => {
       res({})
       return
     }
+    if (req.headers['content-type'] !== 'application/json') {
+      reslove({})
+      return
+    }
     let postData = ''
     req.on('data', chunk => {
       postData += chunk
     })
     req.on('end', () => {
       if (!postData) {
-        console.log(1)
         res({})
         return
       }
-      res(decodeURI(postData))
+      res(postData)
     })
   })
   return promise
@@ -27,10 +31,9 @@ const getPostData = (req) => {
 
 const serverHandle = (req, res) => {
   res.setHeader('Content-type', 'application/json')
-
   getPostData(req).then(data => {
-    req.body = data
-    console.log(req.body)
+    req.body = JSON.parse(data)
+
     const musicData = handleMusicRouter(req, res)
     if (musicData) {
       res.end(JSON.stringify(musicData))
