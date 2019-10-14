@@ -1,6 +1,6 @@
 const { URL } = require('../utils/url')
 const { login } = require('../controller/login')
-const { Msg } = require('../model/reqMsg')
+const { Msg } = require('../conf/reqMsg')
 const handleLoginRouter = async (req, res) => {
 
   const method = req.method
