@@ -1,6 +1,6 @@
 const { regist } = require('../controller/regist')
 const { unique } = require('../controller/unique')
-const { Msg } = require('../conf/reqMsg')
+const { Msg } = require('../model/reqMsg')
 
 const handleRegistRouter = async (req, res) => {
 

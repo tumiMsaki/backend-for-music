@@ -1,8 +1,16 @@
 const querystring = require('querystring')
 const handleLoginRouter = require('./src/route/login')
 const handleRegistRouter = require('./src/route/regist')
+const { set, get } = require('./src/db/redis')
+
+const getCookieExpires = () => {
+  const d = new Date()
+  d.setTime(d.getTime() + (1))
+  return d.toUTCString()
+}
 
 const getPostData = (req) => {
+
   const promise = new Promise((res, rej) => {
     if (req.method !== 'POST') {
       res({})
@@ -32,13 +40,46 @@ const serverHandle = (req, res) => {
   const url = req.url
   req.path = url.split('?')[0]
 
-  getPostData(req).then(data => {
+  req.cookie = {}
+  const cookiestr = req.headers.cookie || ''
+  cookiestr.split(';').forEach(element => {
+    if (!element) {
+      return
+    }
+    const arr = element.split('=')
+    const key = arr[0].trim()
+    const val = arr[1].trim()
+    req.cookie[key] = val
+  });
+
+  let needSetCookie = false
+  let userId = req.cookie.userid
+  
+  if (!userId) {
+    needSetCookie = true
+    userId = `${Date.now()}_${Math.random()}`
+    set(userId, {})
+  }
+
+  req.sessionId = userId
+  get(req.sessionId).then(sessionData => {
+    if (sessionData == null) {
+      set(req.sessionId, {})
+      req.session = {}
+    } else {
+      req.session = sessionData
+    }
+    return getPostData(req)
+  }).then(data => {
     req.body = data
 
   const loginData = handleLoginRouter(req, res)
     if (loginData) {
         loginData.then(data => {
           if (data) {
+            if (needSetCookie) {
+              res.setHeader('Set-Cookie', `userid=${userId}; path=/; httpOnly; Expires=${getCookieExpires()}`)
+            }
             res.end(JSON.stringify(data))
           }
           return 
@@ -49,6 +90,9 @@ const serverHandle = (req, res) => {
     if (registData) {
           registData.then(data => {
             if(data) {
+              if (needSetCookie) {
+                res.setHeader('Set-Cookie', `userid=${userId}; path=/; httpOnly; Expires=${getCookieExpires()}`)
+              }
               res.end(JSON.stringify(data))
             }
             return
