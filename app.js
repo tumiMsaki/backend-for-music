@@ -5,7 +5,7 @@ const { set, get } = require('./src/db/redis')
 
 const getCookieExpires = () => {
   const d = new Date()
-  d.setTime(d.getTime() + (1))
+  d.setTime(d.getTime() + (10))
   return d.toUTCString()
 }
 
