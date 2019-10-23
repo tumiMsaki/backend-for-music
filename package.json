@@ -4,18 +4,20 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "dev": "cross-env NODE_ENV=dev nodemon ./bin/api.js",
-    "prd": "cross-env NODE_ENV=production nodemon ./bin/api.js"
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/tumiMsaki/music_backend.git"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
-  "devDependencies": {
-    "cross-env": "^6.0.3",
-    "nodemon": "^1.19.3"
+  "bugs": {
+    "url": "https://github.com/tumiMsaki/music_backend/issues"
   },
-  "dependencies": {
-    "mysql": "^2.17.1",
-    "redis": "^2.8.0"
+  "homepage": "https://github.com/tumiMsaki/music_backend#readme",
+  "devDependencies": {
+    "koa": "^2.10.0"
   }
 }
