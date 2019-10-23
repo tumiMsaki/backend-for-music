@@ -4,6 +4,8 @@
   "description": "",
   "main": "index.js",
   "scripts": {
+    "dev": "cross-env NODE_ENV=dev nodemon ./bin/api.js",
+    "prd": "cross-env NODE_ENV=production nodemon ./bin/api.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
@@ -18,6 +20,9 @@
   },
   "homepage": "https://github.com/tumiMsaki/music_backend#readme",
   "devDependencies": {
-    "koa": "^2.10.0"
+    "cross-env": "^6.0.3",
+    "koa": "^2.10.0",
+    "koa-router": "^7.4.0",
+    "nodemon": "^1.19.4"
   }
 }
