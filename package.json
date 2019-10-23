@@ -4,8 +4,8 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "dev": "cross-env NODE_ENV=dev nodemon ./bin/api.js",
-    "prd": "cross-env NODE_ENV=production nodemon ./bin/api.js",
+    "dev": "cross-env NODE_ENV=dev nodemon ./server/app.js --exec babel-node",
+    "prd": "cross-env NODE_ENV=production nodemon .server/app.js --exec babel-node",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
@@ -24,5 +24,9 @@
     "koa": "^2.10.0",
     "koa-router": "^7.4.0",
     "nodemon": "^1.19.4"
+  },
+  "dependencies": {
+    "babel-cli": "^6.26.0",
+    "babel-preset-es2015": "^6.24.1"
   }
 }
