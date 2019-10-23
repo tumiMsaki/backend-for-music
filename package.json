@@ -1,7 +1,7 @@
 {
   "name": "music_node",
   "version": "1.0.0",
-  "description": "",
+  "description": "koa2_demo",
   "main": "index.js",
   "scripts": {
     "dev": "cross-env NODE_ENV=dev nodemon ./server/app.js --exec babel-node",
@@ -13,21 +13,25 @@
     "url": "git+https://github.com/tumiMsaki/music_backend.git"
   },
   "keywords": [],
-  "author": "",
-  "license": "ISC",
+  "author": "masaki",
+  "license": "MIT",
   "bugs": {
     "url": "https://github.com/tumiMsaki/music_backend/issues"
   },
   "homepage": "https://github.com/tumiMsaki/music_backend#readme",
   "devDependencies": {
+    "babel-cli": "^6.26.0",
+    "babel-preset-es2015": "^6.24.1",
     "cross-env": "^6.0.3",
-    "koa": "^2.10.0",
-    "koa-router": "^7.4.0",
     "nodemon": "^1.19.4"
   },
   "dependencies": {
-    "babel-cli": "^6.26.0",
-    "babel-preset-es2015": "^6.24.1",
-    "koa-bodyparser": "^4.2.1"
+    "koa": "^2.10.0",
+    "koa-bodyparser": "^4.2.1",
+    "koa-router": "^7.4.0"
+  },
+  "engines": {
+    "node": ">= 7.0.0",
+    "npm": ">= 3.0.0"
   }
 }
