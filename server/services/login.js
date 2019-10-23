@@ -1,7 +1,11 @@
 import { Context } from 'koa'
 
 const loginServer = async (ctx = Context) => {
-  ctx.body = ctx
+  ctx.set('Access-Control-Allow-Origin','*')
+  ctx.body = {
+    code: 200,
+    msg: ctx.request.body
+  }
 }
 
 export {

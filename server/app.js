@@ -1,10 +1,11 @@
 import Koa from 'koa'
-import { Login, Regist } from './routers'
+import bodyparser from 'koa-bodyparser'
+import router from './routers/index.js'
 
 const app = new Koa()
 const PORT = 3000
 
-app.use(Login.routes()).use(Login.allowedMethods())
-app.use(Regist.routes()).use(Regist.allowedMethods())
+app.use(bodyparser())
+app.use(router.routes()).use(router.allowedMethods())
 
 app.listen(PORT)
