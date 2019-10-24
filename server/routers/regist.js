@@ -1,8 +1,8 @@
 import Router from 'koa-router'
-import { registServer } from '../services/regist' 
+import { Signup } from '../controllers/regist' 
 const route = new Router()
 
-route.get('/api/regist', registServer)
+route.post('/api/regist', Signup)
 
 export {
   route as Regist

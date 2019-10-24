@@ -1,4 +1,5 @@
 import { Context } from 'koa'
+import * as userModel from '../../init/util/mysql' 
 
 const loginServer = async (ctx = Context) => {
   ctx.set('Access-Control-Allow-Origin','*')
