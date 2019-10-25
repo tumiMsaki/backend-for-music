@@ -2,4 +2,5 @@ node_modules/
 .DS_Store/
 yarn-error.log/
 .idea/
-init/lib/config.js
+init/lib/mysql.config.js
+init/lib/redis.config.js

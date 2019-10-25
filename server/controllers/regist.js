@@ -1,8 +1,8 @@
 import * as userModel from '../../init/util/mysql'
+import md5 from 'md5'
 
 exports.Signup = async ctx => {
   let { name, password } = ctx.request.body 
-  console.log(typeof name)
   await userModel.searchUser(name)
     .then(async result => {
       if (result[0]) {
@@ -11,7 +11,7 @@ exports.Signup = async ctx => {
           msg: '存在'
         }
       } else {
-        await userModel.addUser([ name, password ])
+        await userModel.addUser([ name, md5(password) ])
           .then(res => {
             console.log('success')
             ctx.body = {
