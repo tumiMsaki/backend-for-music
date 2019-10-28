@@ -12,7 +12,7 @@ exports.Signup = async ctx => {
           msg: '存在'
         }
       } else {
-        await userModel.addUser([ uuid.v4(), name, md5(password) ])
+        await userModel.addUser([ uuid.v4(), name, md5(password), null])
           .then(res => {
             console.log('success')
             ctx.body = {

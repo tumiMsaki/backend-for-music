@@ -32,8 +32,9 @@ let users =
     `create table if not exists users(
      id INT NOT NULL AUTO_INCREMENT,
      user_uuid VARCHAR(100) NOT NULL,
-     name VARCHAR(100) NOT NULL,
+     uname VARCHAR(100) NOT NULL,
      password VARCHAR(100) NOT NULL,
+     nickname VARCHAR(100),
      PRIMARY KEY ( id )
     );`
   
@@ -63,11 +64,11 @@ createTable(collections)
 createTable(musicList)
 
 exports.addUser = (value) => {
-  let _sql = `insert into users(user_uuid, name, password) values(?, ?, ?);`
+  let _sql = `insert into users(user_uuid, uname, password, nickname) values(?, ?, ?, ?);`
   return query(_sql, value)
 }
 
 exports.searchUser = (name) => {
-  let _sql = `select * from users where name="${name}";`
+  let _sql = `select * from users where uname="${name}";`
   return query(_sql)
 }

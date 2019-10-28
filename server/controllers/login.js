@@ -6,7 +6,7 @@ exports.Signin = async ctx => {
   await userModel.searchUser(name) 
     .then(result => {
       let res = result
-      if (res.length && name === res[0]['name'] && md5(password) === res[0]['password']) {
+      if (res.length && name === res[0]['uname'] && md5(password) === res[0]['password']) {
         ctx.body = {
           code: 200,
           msg: 'login success'
