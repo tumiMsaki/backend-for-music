@@ -42,25 +42,19 @@ let collections =
       id INT NOT NULL AUTO_INCREMENT,
       user_id VARCHAR(100) NOT NULL,
       music_id VARCHAR(100) NOT NULL,
-      PRIMARY KEY( id )
-    )`
+      PRIMARY KEY ( id )
+    );`
 
 let musicList = 
     `create table if not exists musci(
       id INT NOT NULL AUTO_INCREMENT,
       music_uuid VARCHAR(100) NOT NULL,
       music_name VARCHAR(100) NOT NULL,
-      music_src VARCHAR(100) NOT NULL
-      PRIMARY KEY( id )
-    )`
+      music_src VARCHAR(100) NOT NULL,
+      PRIMARY KEY ( id )
+    );`
   
 let createTable = function(sql) {
-  return query(sql, [])
-}
-let collections = function(sql) {
-  return query(sql, [])
-}
-let musicList = function(sql) {
   return query(sql, [])
 }
 

@@ -1,8 +1,8 @@
 import Router from 'koa-router'
-import { musicServer } from '../controllers/music' 
+import * as musciApi from '../controllers/music' 
 const route = new Router()
 
-route.post('/api/music', musicServer)
+route.post('/api/music', musciApi.searchMusic)
 
 export {
   route as Music
