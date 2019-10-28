@@ -27,6 +27,14 @@ let query = function(sql, value) {
     })
   })
 }
+
+let users =
+    `create table if not exists users(
+     id INT NOT NULL AUTO_INCREMENT,
+     name VARCHAR(100) NOT NULL,
+     password VARCHAR(100) NOT NULL,
+     PRIMARY KEY ( id )
+    );`
   
 let createTable = function(sql) {
   return query(sql, [])
