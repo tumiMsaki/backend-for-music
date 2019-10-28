@@ -47,11 +47,12 @@ let collections =
     );`
 
 let musicList = 
-    `create table if not exists musci(
+    `create table if not exists music(
       id INT NOT NULL AUTO_INCREMENT,
       music_uuid VARCHAR(100) NOT NULL,
       music_name VARCHAR(100) NOT NULL,
-      music_src VARCHAR(100) NOT NULL,
+      music_author VARCHAR(100) NOT NULL,
+      music_src VARCHAR(500) NOT NULL,
       PRIMARY KEY ( id )
     );`
   
@@ -71,4 +72,9 @@ exports.addUser = (value) => {
 exports.searchUser = (name) => {
   let _sql = `select * from users where uname="${name}";`
   return query(_sql)
+}
+
+exports.addMusic = (value) => {
+  let _sql = `insert into music(music_uuid, music_name, music_author, music_src) values(?, ?, ?, ?);`
+  return query(_sql, value)
 }
