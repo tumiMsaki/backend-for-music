@@ -1,13 +1,20 @@
-import { Context } from 'koa' 
-
-const musicServer = async (ctx = Context) => {
-  ctx.set('Access-Control-Allow-Origin','*')
+const searchMusic = async ctx  => {
   ctx.body = {
     code: 200,
-    msg: ctx.request.body
+    msg: 'searchMusic'
   }
 }
 
+const musicCollection = async ctx => {
+
+}
+
+const addFavorites = async ctx => {
+
+}
+
 export {
-  musicServer
+  searchMusic,
+  musicCollection,
+  addFavorites
 }
