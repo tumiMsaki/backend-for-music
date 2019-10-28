@@ -31,19 +31,45 @@ let query = function(sql, value) {
 let users =
     `create table if not exists users(
      id INT NOT NULL AUTO_INCREMENT,
+     user_uuid VARCHAR(100) NOT NULL,
      name VARCHAR(100) NOT NULL,
      password VARCHAR(100) NOT NULL,
      PRIMARY KEY ( id )
     );`
   
+let collections = 
+    `create table if not exists collections(
+      id INT NOT NULL AUTO_INCREMENT,
+      user_id VARCHAR(100) NOT NULL,
+      music_id VARCHAR(100) NOT NULL,
+      PRIMARY KEY( id )
+    )`
+
+let musicList = 
+    `create table if not exists musci(
+      id INT NOT NULL AUTO_INCREMENT,
+      music_uuid VARCHAR(100) NOT NULL,
+      music_name VARCHAR(100) NOT NULL,
+      music_src VARCHAR(100) NOT NULL
+      PRIMARY KEY( id )
+    )`
+  
 let createTable = function(sql) {
+  return query(sql, [])
+}
+let collections = function(sql) {
+  return query(sql, [])
+}
+let musicList = function(sql) {
   return query(sql, [])
 }
 
 createTable(users)
+createTable(collections)
+createTable(musicList)
 
 exports.addUser = (value) => {
-  let _sql = `insert into users(name, password) values(?, ?);`
+  let _sql = `insert into users(user_uuid, name, password) values(?, ?, ?);`
   return query(_sql, value)
 }
 

@@ -1,4 +1,5 @@
 import * as userModel from '../../init/util/mysql'
+import uuid from 'node-uuid'
 import md5 from 'md5'
 
 exports.Signup = async ctx => {
