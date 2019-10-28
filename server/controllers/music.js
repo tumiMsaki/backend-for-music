@@ -6,11 +6,17 @@ const searchMusic = async ctx  => {
 }
 
 const musicCollection = async ctx => {
-
+  ctx.body = {
+    code: 200,
+    msg: 'collectionList'
+  }
 }
 
 const addFavorites = async ctx => {
-
+  ctx.body = {
+    code: 200,
+    msg: 'addMusci'
+  }
 }
 
 export {
