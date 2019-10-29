@@ -78,3 +78,13 @@ exports.addMusic = (value) => {
   let _sql = `insert into music(music_uuid, music_name, music_author, music_src) values(?, ?, ?, ?);`
   return query(_sql, value)
 }
+
+exports.searchMusic = (name) => {
+  let _sql = `select * from music where music_name="${name}";`
+  return query(_sql)
+}
+
+exports.searchAuthor = (name) => {
+  let _sql = `select * from music where music_author="${name}";`
+  return query(_sql)
+}
