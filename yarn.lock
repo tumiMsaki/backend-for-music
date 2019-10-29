@@ -2074,11 +2074,6 @@ koa-router@^7.4.0:
     path-to-regexp "^1.1.1"
     urijs "^1.19.0"
 
-koa-session2@^2.2.10:
-  version "2.2.10"
-  resolved "https://registry.npm.taobao.org/koa-session2/download/koa-session2-2.2.10.tgz#90b83526a8f2e4cdc3e64d421dc0e112bf725d48"
-  integrity sha1-kLg1Jqjy5M3D5k1CHcDhEr9yXUg=
-
 koa@^2.10.0:
   version "2.10.0"
   resolved "https://registry.npm.taobao.org/koa/download/koa-2.10.0.tgz#86a583ff280896dce3a36b0b6dae80f9559240d3"
