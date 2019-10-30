@@ -1,13 +1,17 @@
-exports.setCookie = async ctx => {
-  return (function(value) {
-    ctx.cookies.set('_user', value, {
-      maxAge: 10 * 60 * 1000,
-      httpOnly: true,
-      overwrite: false 
-    })
-  })()
+import { redis } from '../../init/util/redis'
+
+exports.setCookie = async (ctx, _user, _uuid) => {
+  const maxAge = 100000;
+  const c = Buffer.from(_user).toString('base64')
+  ctx.cookies.set('_user', c, {
+    maxAge,
+    httpOnly: true,
+    overwrite: false 
+  })
+
+  await redis.set(c, _uuid, "EX", maxAge / 1000)
 }
 
-exports.getCookie = async ctx => {
-  return ctx.get('_user')
+exports.getCookie = ctx => {
+  return ctx.cookies.get('_user')
 }
