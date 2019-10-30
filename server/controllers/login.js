@@ -8,7 +8,6 @@ exports.Signin = async ctx => {
     .then(result => {
       let res = result
       if (res.length && name === res[0]['uname'] && md5(password) === res[0]['password']) {
-        console.log()
         Cookie.setCookie(ctx, name, res[0]['user_uuid'])
         ctx.body = {
           code: 200,
