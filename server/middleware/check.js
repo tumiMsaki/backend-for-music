@@ -13,13 +13,13 @@ module.exports = () => {
       }
     }
 
-    const redisData = await redis.get(name);
-    if (!redisData) {
-      return ctx.body = {
-        err_code: 1,
-        msg: 'SESSIONID已经过期~',
-      }
-    }
+    // const redisData = await redis.get(name);
+    // if (!redisData) {
+    //   return ctx.body = {
+    //     err_code: 1,
+    //     msg: 'SESSIONID已经过期~',
+    //   }
+    // }
     
     return await next()
   }
