@@ -2118,6 +2118,11 @@ koa-router@^7.4.0:
     path-to-regexp "^1.1.1"
     urijs "^1.19.0"
 
+koa-session2@^2.2.10:
+  version "2.2.10"
+  resolved "https://registry.npm.taobao.org/koa-session2/download/koa-session2-2.2.10.tgz#90b83526a8f2e4cdc3e64d421dc0e112bf725d48"
+  integrity sha1-kLg1Jqjy5M3D5k1CHcDhEr9yXUg=
+
 koa-session@^5.12.3:
   version "5.12.3"
   resolved "https://registry.npm.taobao.org/koa-session/download/koa-session-5.12.3.tgz#c3a10b5195e1f49d13cf48e78efd6724599e16d7"
@@ -2414,6 +2419,11 @@ nan@^2.12.1:
   version "2.14.0"
   resolved "https://registry.npm.taobao.org/nan/download/nan-2.14.0.tgz#7818f722027b2459a86f0295d434d1fc2336c52c"
   integrity sha1-eBj3IgJ7JFmobwKV1DTR/CM2xSw=
+
+nanoid@^2.1.0:
+  version "2.1.6"
+  resolved "https://registry.npm.taobao.org/nanoid/download/nanoid-2.1.6.tgz?cache=0&sync_timestamp=1571898879475&other_urls=https%3A%2F%2Fregistry.npm.taobao.org%2Fnanoid%2Fdownload%2Fnanoid-2.1.6.tgz#0665418f692e54cf44f34d4010761f3240a03314"
+  integrity sha1-BmVBj2kuVM9E801AEHYfMkCgMxQ=
 
 nanomatch@^1.2.9:
   version "1.2.13"
@@ -3092,6 +3102,13 @@ shebang-regex@^3.0.0:
   version "3.0.0"
   resolved "https://registry.npm.taobao.org/shebang-regex/download/shebang-regex-3.0.0.tgz#ae16f1644d873ecad843b0307b143362d4c42172"
   integrity sha1-rhbxZE2HPsrYQ7AwexQzYtTEIXI=
+
+shortid@^2.2.15:
+  version "2.2.15"
+  resolved "https://registry.npm.taobao.org/shortid/download/shortid-2.2.15.tgz#2b902eaa93a69b11120373cd42a1f1fe4437c122"
+  integrity sha1-K5AuqpOmmxESA3PNQqHx/kQ3wSI=
+  dependencies:
+    nanoid "^2.1.0"
 
 signal-exit@^3.0.0, signal-exit@^3.0.2:
   version "3.0.2"

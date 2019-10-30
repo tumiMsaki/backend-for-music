@@ -1,4 +1,5 @@
 import * as userModel from '../../init/util/mysql' 
+import * as Cookie from '../utils/cookie'
 import md5 from 'md5'
 
 exports.Signin = async ctx => {
@@ -7,7 +8,7 @@ exports.Signin = async ctx => {
     .then(result => {
       let res = result
       if (res.length && name === res[0]['uname'] && md5(password) === res[0]['password']) {
-        ctx.session.name = name
+        Cookie.setCookie(name)
         ctx.body = {
           code: 200,
           msg: 'login success'
