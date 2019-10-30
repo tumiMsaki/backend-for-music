@@ -1,4 +1,4 @@
-const Redis = require("ioredis");
+import Redis from 'ioredis'
 
 class Store {
   constructor(opts) {
@@ -7,9 +7,10 @@ class Store {
         this.client.on("error", opts.onError);
       }
   }
-  
+
   async get(key) {
     const sess = await this.client.get(key);
+    console.log(sess)
     return JSON.parse(sess);
   }
 
