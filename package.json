@@ -4,9 +4,9 @@
   "description": "koa2_demo",
   "main": "index.js",
   "scripts": {
-    "dev": "cross-env NODE_ENV=dev nodemon ./server/app.js --exec babel-node",
-    "prd": "cross-env NODE_ENV=production nodemon .server/app.js --exec babel-node",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "dev": "cross-env NODE_ENV=dev nodemon ./app.js --exec babel-node",
+    "prd": "cross-env NODE_ENV=production nodemon ./app.js --exec babel-node",
+    "test": "mocha --exit"
   },
   "repository": {
     "type": "git",
@@ -22,18 +22,18 @@
   "devDependencies": {
     "babel-cli": "^6.26.0",
     "babel-preset-es2015": "^6.24.1",
-    "chai": "^4.2.0",
     "cross-env": "^6.0.3",
+    "intelli-espower-loader": "^1.0.1",
     "mocha": "^6.2.2",
-    "nodemon": "^1.19.4"
+    "nodemon": "^1.19.4",
+    "power-assert": "^1.6.1",
+    "request": "^2.88.0"
   },
   "dependencies": {
     "ioredis": "^4.14.1",
     "koa": "^2.10.0",
     "koa-bodyparser": "^4.2.1",
     "koa-router": "^7.4.0",
-    "koa-session": "^5.12.3",
-    "koa-session2": "^2.2.10",
     "md5": "^2.2.1",
     "mysql": "^2.17.1",
     "node-uuid": "^1.4.8",
