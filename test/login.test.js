@@ -10,10 +10,16 @@ describe('测试登录是否正常', () => {
       password: 1234
     }
 
-    request.post({url: `${host}/api/login`, qs: qs}, (err, res, body) => {
+    request.post({
+      url: `${host}/api/login`,
+      method: "POST",
+      json: true,
+      headers: {
+        "content-type": "application/json",
+      },
+      body: qs
+    }, (err, res, body) => {
       if (!err && res.statusCode == 200) {
-        body = JSON.parse(body)
-        console.log(url)
         assert(body.code === 200)
         done()
       }
