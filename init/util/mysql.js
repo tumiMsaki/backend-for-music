@@ -84,7 +84,34 @@ exports.searchMusic = (name) => {
   return query(_sql)
 }
 
+exports.searchMusicById = (_id) => {
+  let _sql = `select * from music where id=${_id};`
+  return query(_sql)
+}
+
 exports.searchAuthor = (name) => {
   let _sql = `select * from music where music_author="${name}";`
+  return query(_sql)
+}
+
+exports.musicCollection = (value) => {
+  let _sql = `insert into collections(user_id, music_id) values(?, ?);`
+  return query(_sql, value)
+}
+
+exports.searchCollectionMusic = (value) => {
+  const { user_id, music_id } = value
+  let _sql = `select * from collections where user_id="${user_id}" and music_id=${music_id};`
+  return query(_sql)
+}
+
+exports.searchCollectionMusicList = (user_id) => {
+  let _sql = `select * from collections where user_id="${user_id}";`
+  return query(_sql)
+}
+
+exports.cancelMusicCollection = (value) => {
+  const { user_id, music_id } = value
+  let _sql = `delete from collections where music_id=${music_id} and user_id="${user_id}";`
   return query(_sql)
 }

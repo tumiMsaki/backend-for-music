@@ -1,5 +1,5 @@
 import * as userModel from '../../init/util/mysql' 
-import * as Cookie from '../utils/cookie'
+import * as Cookie from '../utils/session'
 import md5 from 'md5'
 
 exports.Signin = async ctx => {

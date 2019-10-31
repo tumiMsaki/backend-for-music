@@ -1,5 +1,5 @@
 import { redis } from '../../../init/util/redis'
-import Cookie from '../../utils/cookie'
+import Cookie from '../../utils/session'
 
 module.exports = () => {
   return async (ctx, next) => {

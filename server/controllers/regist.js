@@ -8,8 +8,8 @@ exports.Signup = async ctx => {
     .then(async result => {
       if (result[0]) {
         ctx.body = {
-          code: 500,
-          msg: '存在'
+          code: 4,
+          msg: '账号已经存在～'
         }
       } else {
         await userModel.addUser([ uuid.v4(), name, md5(password), null])

@@ -15,3 +15,9 @@ exports.setCookie = async (ctx, _user, _uuid) => {
 exports.getCookie = ctx => {
   return ctx.cookies.get('_user')
 }
+
+exports.getRedisClient = async ctx => {
+  const _user = ctx.cookies.get('_user')
+  const id = await redis.get(_user)
+  return id
+}
