@@ -151,7 +151,6 @@ const searchMusicById = async ctx => {
 const cancelMusicCollection = async ctx => {
   const user_id = await Cookie.getRedisClient(ctx)
   const { music_id } = ctx.request.body
-  console.log(user_id, music_id)
   await userModel.cancelMusicCollection({user_id, music_id})
     .then(async result => {
       const res = result
