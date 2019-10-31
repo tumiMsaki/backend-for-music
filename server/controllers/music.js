@@ -191,6 +191,15 @@ const cancelMusicCollection = async ctx => {
     }) 
 }
 
+const changeNickName = async ctx => {
+  const user_id = Cookie.getRedisClient(ctx)
+  const { newNickName } = ctx.request.body
+  await userModel.changeNickName({user_id, newNickName})
+    .then(async result => {
+      console.log(result)
+    })  
+}
+
 export {
   searchMusic,
   musicCollection,
@@ -198,5 +207,6 @@ export {
   addMusic,
   searchCollectionMusicList,
   searchMusicById,
-  cancelMusicCollection
+  cancelMusicCollection,
+  changeNickName
 }

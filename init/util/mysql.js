@@ -115,3 +115,9 @@ exports.cancelMusicCollection = (value) => {
   let _sql = `delete from collections where music_id=${music_id} and user_id="${user_id}";`
   return query(_sql)
 }
+
+exports.changeNickName = (value) => {
+  const {user_id, newNickName } = value
+  let _sql = `updated users set nickname="${newNickName} where user_uuid="${user_id}";`
+  return query(_sql)
+}

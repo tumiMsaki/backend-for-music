@@ -21,3 +21,8 @@ exports.getRedisClient = async ctx => {
   const id = await redis.get(_user)
   return id
 }
+
+exports.cancelRedisClient = async ctx => {
+  const _user = ctx.cookies.get('_user')
+  return await redis.del(_user)
+}

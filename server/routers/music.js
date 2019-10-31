@@ -9,6 +9,7 @@ route.post('/api/music/searchAuthor', musciApi.searchAuthor)
 route.post('/api/music/searchCollectionMusicList', musciApi.searchCollectionMusicList)
 route.post('/api/music/searchMusicById', musciApi.searchMusicById)
 route.post('/api/music/cancelMusicCollection', musciApi.cancelMusicCollection)
+route.post('/api/music/changeNickName', musciApi.changeNickName)
 
 export {
   route as Music
